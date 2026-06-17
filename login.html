@@ -109,7 +109,7 @@
             font-weight: 600;
             color: #374151;
         }
-        
+        input[type="password"],
         input[type="cpf"],
         input[type="text"],
         input[type="email"],
@@ -231,6 +231,11 @@
         .redes a:hover{
             color:white;
         }
+        .p_a {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 40px;
+        }
     </style>
 	<body>
         <header>
@@ -247,37 +252,100 @@
                 </nav>
             </div>
         </header>
-        <main class="container">
+        <!--<main class="container">
             <div class="main-content">
                 <section class="headline">
                     <h1>Acesse sua conta</h1>
                     <p>Informe seus dados e acesse imediatamente, ou crie uma se não houver.</p>
                 </section>
                 <section class="form-container">
-                    <form id="lpForm">
+                    <form id="loginForm">
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input type="email" id="email" required autocomplete="email" placeholder="Ex: joao@empresa.com">
                         </div>
-        
+                    
                         <div class="form-group">
-                            <label for="telefone">Senha</label>
-                            <input type="tel" id="telefone" autocomplete="tel" placeholder="Ex: 12345678">
-                        </div>
-                        <div class="form-group">
-                            <label for="CPF">CPF</label>
-                            <input type="cpf" id="cpf" autocomplete="cpf" placeholder="Ex: 123.456.789.00">
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="lgpd" required>
-                            <label for="lgpd">
-                                Estou de acordo com os <strong>Termos de Uso</strong> e <strong>Política de Privacidade</strong>. Aceito receber comunicações baseadas no meu interesse.
-                            </label>
+                            <label for="password">Senha</label>
+                            <input type="password" id="password" required placeholder="Sua senha">
                         </div>
                         <button type="submit" id="btnSubmit">Entrar</button>
-                        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;";><a href="esqueciasenha.html">Esqueci minha senha</a></p>
-                        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;";><a href="criarconta.html">Criar conta</a></p>
+                        <div class="p_a">
+                            <p><a href="esqueciasenha.html">Esqueci minha senha</a></p>
+                            <p><a href="criarconta.html">Criar conta</a></p>
+                        </div>
+                    </form>
+                    <div id="mensagem" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
                 </section>
             </div>
+        </main>-->
+
+        <main class="container">
+            <div id="tela-login" class="main-content">
+                <section class="headline">
+                    <h1>Acesse sua conta</h1>
+                    <p>Informe seus dados e acesse imediatamente, ou crie uma se não houver.</p>
+                </section>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" placeholder="Digite seu e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="submit" id="btnLoginSubmit" class="btn-ok">Entrar</button>
+                    <div class="p_a">
+                        <p><a href="esqueciasenha.html">Esqueci minha senha</a></p>
+                        <p><a href="criarconta.html">Criar conta</a></p>
+                    </div>
+                </form>
+            </div>
         </main>
-       
+        
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+            const SUPABASE_URL = "https://qhwgqvjepojthzlhejep.supabase.co";
+            const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFod2dxdmplcG9qdGh6bGhlamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNDI5ODIsImV4cCI6MjA5MjYxODk4Mn0.Y4bVqjbG6GDnZCdGD-dRQVWxny-Y10riiqzrC3nQQok";
+            const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            const formLogin = document.getElementById('');
+            const btnLoginSubmit = document.getElementById('btnLoginSubmit');
+
+                btnLoginSubmit.disabled = true;
+                btnLoginSubmit.innerText = "Verificando...";
+
+                const emailDigitado = document.getElementById('login-email').value;
+                const senhaDigitada = document.getElementById('login-senha').value;
+
+                try {
+                    // Procura na tabela 'cadastro' uma linha onde email E senha correspondam ao digitado
+                    const { data, error } = await _supabase
+                        .from('contas')
+                        .select('*')
+                        .eq('email', emailDigitado)
+                        .eq('senha', senhaDigitada);
+
+                    if (error) {
+                        alert('Erro ao conectar ao banco de dados: ' + error.message);
+                        return;
+                    }
+
+                    // Se o array retornar com algum registro encontrado
+                    if (data && data.length > 0) {
+                        alert(`Seja bem-vindo de volta, ${data[0].nome}!`);
+                        window.location.href = "index.html"; // Redireciona para a Home do seu site
+                    } else {
+                        alert('E-mail ou senha incorretos. Tente novamente.');
+                    }
+
+                } catch (err) {
+                    alert('Erro no sistema: ' + err.message);
+                } finally {
+                    btnLoginSubmit.disabled = false;
+                    btnLoginSubmit.innerText = "Entrar";
+                }
+        </script>
+    </body>
+</html>
