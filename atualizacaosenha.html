@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Definir Nova Senha</title>
+  <!-- 1. CERTIFIQUE-SE DE CARREGAR O CDN DO SUPABASE AQUI TAMBÉM -->
+  <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+
+  <h2>Digite sua nova senha</h2>
+  
+  <form id="formNovaSenha">
+    <input type="password" id="novaSenhaInput" placeholder="Nova senha" required minlength="6" />
+    <button type="submit">Atualizar Senha</button>
+  </form>
+
+  <script>
+    // 2. INICIALIZE O SUPABASE NESTA PÁGINA TAMBÉM
+    const SUPABASE_URL = "https://qhwgqvjepojthzlhejep.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFod2dxdmplcG9qdGh6bGhlamVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNDI5ODIsImV4cCI6MjA5MjYxODk4Mn0.Y4bVqjbG6GDnZCdGD-dRQVWxny-Y10riiqzrC3nQQok";
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // 3. CAPTURE O ENVIO DO FORMULÁRIO
+    document.getElementById('formNovaSenha').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const novaSenhaDigitada = document.getElementById('novaSenhaInput').value;
+
+      // O SEU CÓDIGO SELECIONADO ENTRA AQUI:
+      const { data, error } = await _supabase.auth.updateUser({
+        senha: novaSenhaDigitada
+      });
+
+      if (error) {
+        alert('Erro ao atualizar senha: ' + error.message);
+      } else {
+        alert('Senha alterada com sucesso! Você já pode fazer login.');
+        // Redireciona de volta para a sua página principal de login no GitHub Pages
+        window.location.href = 'https://github.io';
+      }
+    });
+  </script>
+
+</body>
+</html>

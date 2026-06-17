@@ -267,6 +267,17 @@
                 </section>
             </div>
         </main>
+        <script>
+            const { data, error } = await supabase.auth.resetPasswordForEmail('email-do-usuario@exemplo.com', {
+                redirectTo: 'https://gabrielpgomes11.github.io/Site-Cybertech/atualizacaosenha.html',
+            })
+
+            if (error) {
+                console.error('Erro ao enviar e-mail:', error.message)
+            }   else {
+                alert('E-mail de redefinição enviado com sucesso!')
+            }
+        </script>
     </body>
 </html>
         
