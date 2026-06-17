@@ -268,7 +268,8 @@
             </div>
         </main>
         <script>
-            const { data, error } = await supabase.auth.resetPasswordForEmail('email-do-usuario@exemplo.com', {
+            email = document.getElementById('email').value;
+            const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
                 redirectTo: 'https://gabrielpgomes11.github.io/Site-Cybertech/atualizacaosenha.html',
             })
 
