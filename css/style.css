@@ -21,6 +21,11 @@ body {
 	flex-wrap: wrap;
 	/* Faz os elementos pularem para a linha de baixo se a tela for pequena */
 }
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 .caixa {
 	position: relative;
