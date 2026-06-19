@@ -4,6 +4,23 @@ body {
 }
 
 
+.conteudo {
+	width: 70%;
+}
+
+/* Quando a tela tiver no máximo 768px (ex: tablets e celulares) */
+@media (max-width: 768px) {
+	.conteudo {
+		width: 100%;
+		/* Ocupa a tela toda */
+	}
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	/* Faz os elementos pularem para a linha de baixo se a tela for pequena */
+}
 
 .caixa {
 	position: relative;
@@ -58,7 +75,7 @@ nav a:hover {
 }
 
 .produtos li:active {
-	border-color: #088C19;	
+	border-color: #088C19;
 }
 
 .produtos li:hover h2 {
@@ -92,16 +109,15 @@ footer {
 	margin: 20px 0 0;
 }
 
-main {
-	
-}
+main {}
 
 form {
 	margin: 40px 0;
 }
 
-form label, form legend {
-	display:block;
+form label,
+form legend {
+	display: block;
 	font-size: 20px;
 	margin: 0 0 10px;
 }
@@ -118,7 +134,7 @@ form label, form legend {
 }
 
 .enviar {
-	width:40%;
+	width: 40%;
 	padding: 15px 0;
 	background: orange;
 	color: white;
@@ -145,7 +161,8 @@ thead {
 	font-weight: bold;
 }
 
-td, th {
+td,
+th {
 	border: 1px solid #000000;
 	padding: 8px 15px;
 }
@@ -153,7 +170,7 @@ td, th {
 
 /* css da página inicial */
 .banner {
-	width:100%;
+	width: 100%;
 	border-radius: 20px;
 }
 
@@ -249,7 +266,12 @@ td, th {
 }
 
 @media screen and (max-width: 480px) {
-	.caixa, .principal, .conteudo-beneficios, .mapa-conteudo, .video {
+
+	.caixa,
+	.principal,
+	.conteudo-beneficios,
+	.mapa-conteudo,
+	.video {
 		width: auto;
 	}
 
@@ -261,94 +283,96 @@ td, th {
 		position: static;
 	}
 
-	.lista-beneficios, .imagem-beneficios {
+	.lista-beneficios,
+	.imagem-beneficios {
 		width: 100%;
 	}
 }
-body{
-    background:#0a0a0a;
-    color:white;
-    font-family: 'Montserrat', sans-serif;
+
+body {
+	background: #0a0a0a;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
 }
 
-header{
-    background:#111;
-    border-bottom:3px solid #00bfff;
+header {
+	background: #111;
+	border-bottom: 3px solid #00bfff;
 }
 
-nav a{
-    color:#00bfff;
-    font-weight:bold;
+nav a {
+	color: #00bfff;
+	font-weight: bold;
 }
 
-nav a:hover{
-    color:white;
+nav a:hover {
+	color: white;
 }
 
-.destaques{
-    text-align:center;
-    padding:50px;
+.destaques {
+	text-align: center;
+	padding: 50px;
 }
 
-.texto-destaque{
-    max-width:800px;
-    margin:20px auto;
-    font-size:18px;
+.texto-destaque {
+	max-width: 800px;
+	margin: 20px auto;
+	font-size: 18px;
 }
 
-.beneficios{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:30px;
+.beneficios {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	margin-top: 30px;
 }
 
-.card-beneficio{
-    background:#151515;
-    border:1px solid #00bfff;
-    border-radius:10px;
-    padding:20px;
-    width:250px;
-    transition:0.3s;
+.card-beneficio {
+	background: #151515;
+	border: 1px solid #00bfff;
+	border-radius: 10px;
+	padding: 20px;
+	width: 250px;
+	transition: 0.3s;
 }
 
-.card-beneficio:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #00bfff;
+.card-beneficio:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 20px #00bfff;
 }
 
-.produtos li{
-    background:#111;
-    border:1px solid #222;
-    border-radius:15px;
-    transition:0.3s;
+.produtos li {
+	background: #111;
+	border: 1px solid #222;
+	border-radius: 15px;
+	transition: 0.3s;
 }
 
-.produtos li:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 20px #00bfff;
+.produtos li:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 0 20px #00bfff;
 }
 
-.produto-preco{
-    color:#00ff7f;
-    font-weight:bold;
-    font-size:22px;
+.produto-preco {
+	color: #00ff7f;
+	font-weight: bold;
+	font-size: 22px;
 }
 
-footer{
-    background:#111;
-    text-align:center;
-    padding:30px;
-    margin-top:50px;
-    border-top:3px solid #00bfff;
+footer {
+	background: #111;
+	text-align: center;
+	padding: 30px;
+	margin-top: 50px;
+	border-top: 3px solid #00bfff;
 }
 
-.redes a{
-    color:#00bfff;
-    text-decoration:none;
+.redes a {
+	color: #00bfff;
+	text-decoration: none;
 }
 
-.redes a:hover{
-    color:white;
+.redes a:hover {
+	color: white;
 }

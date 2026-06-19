@@ -3,16 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberTech Store</title>
 </head>
 <style>
+    .conteudo {
+        width: 70%;
+    }
+
+    /* Quando a tela tiver no máximo 768px (ex: tablets e celulares) */
+    @media (max-width: 768px) {
+        .conteudo {
+            width: 100%;
+            /* Ocupa a tela toda */
+        }
+    }
+
     :root {
         --primary-color: #2563eb;
         --primary-hover: #1d4ed8;
         --text-color: #1f2937;
         --bg-color: #f3f4f6;
         --card-bg: #ffffff;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        /* Faz os elementos pularem para a linha de baixo se a tela for pequena */
     }
 
     * {
@@ -347,8 +365,9 @@
 
             } catch (error) {
                 alert("❌ Erro no login: " + error.message);
-            } 
+            }
         });
     </script>
 </body>
+
 </html>
